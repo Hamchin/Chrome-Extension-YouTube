@@ -1,0 +1,46 @@
+{
+  "name": "My YouTube",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "tabs"
+  ],
+  "background": {
+    "scripts": [
+      "background/script.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "vendor/jquery.min.js",
+        "scripts/main.js"
+      ],
+      "css": [
+        "styles/main.css"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/live_chat*"
+      ],
+      "js": [
+        "vendor/jquery.min.js",
+        "scripts/live_chat.js"
+      ],
+      "css": [
+        "styles/live_chat.css"
+      ],
+      "all_frames": true
+    }
+  ]
+}
