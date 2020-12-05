@@ -40,10 +40,10 @@ $(document).ready(() => {
 $(document).on('click', 'yt-live-chat-renderer[type="default"] .chat-filter-btn', () => setChatType('member'));
 
 // クリックイベント: チャットフィルターボタン (メンバー限定)
-$(document).on('click', 'yt-live-chat-renderer[type="member"] .chat-filter-btn', () => setChatType('hidden'));
+$(document).on('click', 'yt-live-chat-renderer[type="member"] .chat-filter-btn', () => setChatType('moderator'));
 
-// クリックイベント: チャットフィルターボタン (非表示)
-$(document).on('click', 'yt-live-chat-renderer[type="hidden"] .chat-filter-btn', () => setChatType('default'));
+// クリックイベント: チャットフィルターボタン (モデレーター限定)
+$(document).on('click', 'yt-live-chat-renderer[type="moderator"] .chat-filter-btn', () => setChatType('default'));
 
 // クリックイベント: チャットリロードボタン
 $(document).on('click', '.chat-reload-btn', () => chrome.runtime.sendMessage({ type: 'RELOAD_CHAT' }));

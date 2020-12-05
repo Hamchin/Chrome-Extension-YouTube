@@ -21,14 +21,18 @@ yt-live-chat-renderer[type="member"] .chat-filter-btn {
     color: var(--yt-live-chat-sponsor-color);
 }
 
-yt-live-chat-renderer[type="hidden"] .chat-filter-btn {
-    color: #D00000;
+yt-live-chat-renderer[type="moderator"] .chat-filter-btn {
+    color: var(--yt-live-chat-moderator-color);
 }
 
 yt-live-chat-renderer[type="member"] yt-live-chat-text-message-renderer[author-type=""] {
     display: none;
 }
 
-yt-live-chat-renderer[type="hidden"] yt-live-chat-text-message-renderer {
+yt-live-chat-renderer[type="moderator"] yt-live-chat-text-message-renderer[author-type=""] {
+    display: none;
+}
+
+yt-live-chat-renderer[type="moderator"] yt-live-chat-text-message-renderer[author-type="member"] {
     display: none;
 }
