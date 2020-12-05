@@ -22,22 +22,23 @@ $(document).on('click', '.yt-simple-endpoint', async () => {
     $(window).scrollTop(state.scrollTop);
 });
 
-// 動画フィルターボタンを追加する
-const addVideoFilterButton = () => {
-    if ($('.video-filter-btn').length > 0) return;
+// ライブフィルターボタンを追加する
+const addLiveFilterButton = () => {
+    if ($('.live-filter-btn').length > 0) return;
     const menu = $('#title-container #menu');
     if ($(menu).length === 0) return;
     const icon = $('<yt-icon>');
-    const iconButton = $('<yt-icon-button>', { class: 'video-filter-btn', title: 'Show Broadcast Videos', type: 'disabled' });
+    const iconButton = $('<yt-icon-button>', { class: 'live-filter-btn', title: 'Show Live Information' });
     $(iconButton).append(icon);
     $(menu).first().before(iconButton);
     $(icon).html('<svg viewBox="0 0 24 24"><path d="M16.94 6.91l-1.41 1.45c.9.94 1.46 2.22 1.46 3.64s-.56 2.71-1.46 3.64l1.41 1.45c1.27-1.31 2.05-3.11 2.05-5.09s-.78-3.79-2.05-5.09zM19.77 4l-1.41 1.45C19.98 7.13 21 9.44 21 12.01c0 2.57-1.01 4.88-2.64 6.54l1.4 1.45c2.01-2.04 3.24-4.87 3.24-7.99 0-3.13-1.23-5.96-3.23-8.01zM7.06 6.91c-1.27 1.3-2.05 3.1-2.05 5.09s.78 3.79 2.05 5.09l1.41-1.45c-.9-.94-1.46-2.22-1.46-3.64s.56-2.71 1.46-3.64L7.06 6.91zM5.64 5.45L4.24 4C2.23 6.04 1 8.87 1 11.99c0 3.13 1.23 5.96 3.23 8.01l1.41-1.45C4.02 16.87 3 14.56 3 11.99s1.01-4.88 2.64-6.54z"></path><circle cx="12" cy="12" r="3"></circle></svg>');
 };
 
-// クリックイベント: 動画フィルターボタン
-$(document).on('click', '.video-filter-btn', (e) => {
+// クリックイベント: ライブフィルターボタン
+$(document).on('click', '.live-filter-btn', (e) => {
     const section = $(e.target).closest('ytd-section-list-renderer');
-    $(section).toggleClass('video-filter-enabled');
+    const type = $(section).attr('type');
+    $(section).attr('type', type === 'live' ? 'default' : 'live');
     // 各動画を分類する
     $(section).find('ytd-grid-video-renderer').each((_, item) => {
         const isFound = (query) => $(item).find(query).length > 0;
@@ -47,11 +48,11 @@ $(document).on('click', '.video-filter-btn', (e) => {
         }
         // 配信予約の場合
         else if (isFound('paper-button')) {
-            $(item).attr('type', 'reminder');
+            $(item).attr('type', 'live');
         }
         // それ以外の場合
         else {
-            $(item).attr('type', 'default');
+            $(item).attr('type', 'video');
         }
     });
     $(window).scrollTop(1);
@@ -163,10 +164,10 @@ const initialize = () => {
         const options = { childList: true, subtree: true };
         videoStopObserver.observe(document, options);
     }
-    // 登録チャンネルページの場合 -> 動画フィルターボタンを追加する
+    // 登録チャンネルページの場合 -> ライブフィルターボタンを追加する
     if (location.pathname === '/feed/subscriptions') {
-        addVideoFilterButton();
-        setTimeout(addVideoFilterButton, 2000);
+        addLiveFilterButton();
+        setTimeout(addLiveFilterButton, 2000);
     }
     // 動画ページの場合
     if (location.pathname === '/watch') {
