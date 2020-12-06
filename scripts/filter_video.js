@@ -61,6 +61,6 @@ const addFilterButton = (filterInfo) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type !== 'UPDATED') return;
     if (location.pathname !== '/feed/subscriptions') return;
-    addFilterButton(videoFilterInfo);
     addFilterButton(liveFilterInfo);
+    addFilterButton(videoFilterInfo);
 });
