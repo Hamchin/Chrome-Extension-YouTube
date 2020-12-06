@@ -23,10 +23,17 @@
       ],
       "js": [
         "vendor/jquery.min.js",
-        "scripts/main.js"
+        "scripts/stop_video.js",
+        "scripts/video_volume.js",
+        "scripts/float_frame.js",
+        "scripts/keep_scroll.js",
+        "scripts/chat_flow.js",
+        "scripts/reload_chat.js",
+        "scripts/filter_video.js"
       ],
       "css": [
-        "styles/main.css"
+        "styles/float_frame.css",
+        "styles/filter_video.css"
       ]
     },
     {

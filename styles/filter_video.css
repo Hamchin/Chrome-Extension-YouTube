@@ -1,0 +1,43 @@
+#video-title {
+    max-height: 80px !important;
+    -webkit-line-clamp: 4 !important;
+}
+
+.video-filter-btn {
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+}
+
+.video-filter-btn svg {
+    height: 100%;
+    width: 100%;
+}
+
+.video-filter-btn {
+    color: var(--yt-spec-icon-inactive);
+}
+
+ytd-section-list-renderer[type="video"] .video-filter-btn[type="video"] {
+    color: var(--yt-spec-call-to-action);
+}
+
+ytd-section-list-renderer[type="live"] .video-filter-btn[type="live"] {
+    color: var(--yt-spec-call-to-action);
+}
+
+ytd-section-list-renderer[type="video"] > #continuations {
+    display: none !important;
+}
+
+ytd-section-list-renderer[type="live"] > #continuations {
+    display: none !important;
+}
+
+ytd-section-list-renderer[type="video"] ytd-grid-video-renderer[type="live"] {
+    display: none !important;
+}
+
+ytd-section-list-renderer[type="live"] ytd-grid-video-renderer[type="video"] {
+    display: none !important;
+}
