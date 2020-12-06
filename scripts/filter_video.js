@@ -20,6 +20,7 @@ $(document).on('click', '.video-filter-btn', (e) => {
     const button = $(e.target).closest('.video-filter-btn');
     const buttonType = $(button).attr('type');
     $(section).attr('type', sectionType === buttonType ? 'default' : buttonType);
+    if (sectionType === buttonType) return;
     // 各動画をカテゴライズする
     $(section).find('ytd-grid-video-renderer').each((_, item) => {
         const isFound = (query) => $(item).find(query).length > 0;
@@ -36,9 +37,9 @@ $(document).on('click', '.video-filter-btn', (e) => {
             $(item).attr('type', 'video');
         }
     });
-    // スクロール位置をリセットする
-    $(window).scrollTop(1);
-    $(window).scrollTop(0);
+    // サムネイルの未ロードを防ぐ
+    $('ytd-topbar-menu-button-renderer').first().click();
+    $('ytd-topbar-menu-button-renderer').first().click();
 });
 
 // フィルターボタンを設置する
@@ -57,10 +58,28 @@ const addFilterButton = (filterInfo) => {
     $(icon).html(filterInfo.svg);
 };
 
-// タブ更新イベント -> フィルターボタンを追加する
+// インターバルオブジェクト -> フィルターボタンを設置する
+const addFilterButtonInterval = {
+    id: null,
+    execute: function () {
+        addFilterButton(liveFilterInfo);
+        addFilterButton(videoFilterInfo);
+    },
+    start: function () {
+        this.execute();
+        this.id = setInterval(this.execute, 1000);
+    },
+    stop: function () {
+        if (this.id === null) return;
+        clearInterval(this.id);
+        this.id = null;
+    }
+};
+
+// タブ更新イベント -> フィルターボタンを設置する
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type !== 'UPDATED') return;
+    addFilterButtonInterval.stop();
     if (location.pathname !== '/feed/subscriptions') return;
-    addFilterButton(liveFilterInfo);
-    addFilterButton(videoFilterInfo);
+    addFilterButtonInterval.start();
 });
