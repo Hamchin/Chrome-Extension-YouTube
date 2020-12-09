@@ -1,6 +1,10 @@
+/* チャットのお知らせ */
+
 yt-live-chat-viewer-engagement-message-renderer {
     display: none !important;
 }
+
+/* チャットボタンのレイアウト */
 
 .chat-filter-btn, .chat-reload-btn {
     height: 40px;
@@ -13,6 +17,8 @@ yt-live-chat-viewer-engagement-message-renderer {
     width: 100%;
 }
 
+/* チャットボタンのカラー */
+
 .chat-filter-btn, .chat-reload-btn {
     color: var(--yt-spec-icon-inactive);
 }
@@ -24,6 +30,8 @@ yt-live-chat-renderer[type="member"] .chat-filter-btn {
 yt-live-chat-renderer[type="moderator"] .chat-filter-btn {
     color: var(--yt-live-chat-moderator-color);
 }
+
+/* チャットのフィルタリング */
 
 yt-live-chat-renderer[type="member"] yt-live-chat-text-message-renderer[author-type=""] {
     display: none;

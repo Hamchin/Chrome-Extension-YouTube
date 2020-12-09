@@ -17,16 +17,16 @@ $(document).on('keydown', (e) => {
 // キーダウンイベント: テキストエリア
 $(document).on('keydown', 'input, textarea, ytd-commentbox', (e) => e.stopPropagation());
 
-// オブザーバー -> 音量のキャッシュを削除する
-const volumeResetObserver = new MutationObserver(() => localStorage.removeItem('yt-player-volume'));
+// 変更監視: 音量パネル -> 音量のキャッシュを削除する
+const volumePanelObserver = new MutationObserver(() => localStorage.removeItem('yt-player-volume'));
 
-// タブ更新イベント -> オブザーバーを起動する
+// タブ更新イベント -> 変更監視を開始する
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type !== 'UPDATED') return;
-    volumeResetObserver.disconnect();
+    volumePanelObserver.disconnect();
     if (location.pathname !== '/watch') return;
     const panel = document.querySelector('.ytp-volume-panel');
     if (panel === null) return;
     const options = { attributes: true };
-    volumeResetObserver.observe(panel, options);
+    volumePanelObserver.observe(panel, options);
 });

@@ -1,7 +1,11 @@
+/* 動画タイトル */
+
 #video-title {
     max-height: 80px !important;
     -webkit-line-clamp: 4 !important;
 }
+
+/* フィルターボタンのレイアウト */
 
 .video-filter-btn {
     height: 40px;
@@ -13,6 +17,8 @@
     height: 100%;
     width: 100%;
 }
+
+/* フィルターボタンのカラー */
 
 .video-filter-btn {
     color: var(--yt-spec-icon-inactive);
@@ -26,17 +32,17 @@ ytd-section-list-renderer[type="live"] .video-filter-btn[type="live"] {
     color: var(--yt-spec-call-to-action);
 }
 
-ytd-section-list-renderer[type="video"] > #continuations {
-    display: none !important;
-}
-
-ytd-section-list-renderer[type="live"] > #continuations {
-    display: none !important;
-}
+/* 動画表示モード */
 
 ytd-section-list-renderer[type="video"] ytd-grid-video-renderer[type="live"] {
     display: none !important;
 }
+
+ytd-section-list-renderer[type="video"] ytd-grid-video-renderer[type="reminder"] {
+    display: none !important;
+}
+
+/* ライブ表示モード */
 
 ytd-section-list-renderer[type="live"] ytd-grid-video-renderer[type="video"] {
     display: none !important;

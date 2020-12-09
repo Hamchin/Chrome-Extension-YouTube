@@ -17,7 +17,5 @@ const reloadChat = () => {
 
 // メッセージイベント -> チャットを更新する
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type !== 'RELOAD_CHAT') return;
-    if (location.pathname !== '/watch') return;
-    reloadChat();
+    if (message.type === 'RELOAD_CHAT') reloadChat();
 });

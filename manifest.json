@@ -8,7 +8,8 @@
     "128": "icons/icon128.png"
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "contextMenus"
   ],
   "background": {
     "scripts": [
@@ -26,8 +27,6 @@
         "scripts/stop_video.js",
         "scripts/video_volume.js",
         "scripts/float_frame.js",
-        "scripts/keep_scroll.js",
-        "scripts/chat_flow.js",
         "scripts/reload_chat.js",
         "scripts/filter_video.js"
       ],
