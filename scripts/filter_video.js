@@ -69,19 +69,14 @@ const addFilterButton = (filterInfo, menu) => {
         type: filterInfo.type
     });
     $(iconButton).append(icon);
-    $(menu).before(iconButton);
+    $(menu).first().before(iconButton);
     $(icon).html(filterInfo.svg);
 };
 
-// 変更監視: セクションリスト
+// 変更監視: セクションリスト -> 動画アイテムを加工する
 const sectionListObserver = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((section) => {
-            // フィルターボタンを設置する
-            const menu = $(section).find('#title-container > #menu');
-            addFilterButton(liveFilterInfo, menu);
-            addFilterButton(videoFilterInfo, menu);
-            // 各動画アイテムを加工する
             const videoItems = $(section).find('ytd-grid-video-renderer');
             $(videoItems).each((_, item) => editVideoItem(item));
         });
@@ -91,15 +86,13 @@ const sectionListObserver = new MutationObserver((mutations) => {
 // 変更監視: 登録チャンネルページ
 const subscriptionObserver = new MutationObserver(() => {
     const browse = $('ytd-browse[page-subtype="subscriptions"]');
-    const menuList = $(browse).find('#title-container > #menu');
+    const menu = $(browse).find('#title-container > #menu');
     const sectionList = $(browse).find('ytd-section-list-renderer > #contents');
-    if ($(menuList).length === 0) return;
+    if ($(menu).length === 0) return;
     if ($(sectionList).length === 0) return;
     // フィルターボタンを設置する
-    $(menuList).each((_, menu) => {
-        addFilterButton(liveFilterInfo, menu);
-        addFilterButton(videoFilterInfo, menu);
-    });
+    addFilterButton(liveFilterInfo, menu);
+    addFilterButton(videoFilterInfo, menu);
     // 各動画アイテムを加工する
     const videoItems = $(sectionList).find('ytd-grid-video-renderer');
     $(videoItems).each((_, item) => editVideoItem(item));
