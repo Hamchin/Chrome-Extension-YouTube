@@ -3,15 +3,13 @@ const floatFrameState = { switched: false, disabled: false };
 
 // マウスオーバーイベント: フロートフレーム -> ズームイン
 $(document).on('mouseenter', '.float-frame', (e) => {
-    const player = $(e.target).closest('.float-frame');
     if (floatFrameState.switched) return;
-    $(player).removeClass('zoom-out');
+    $(e.currentTarget).removeClass('zoom-out');
 });
 
 // マウスアウトイベント: フロートフレーム -> ズームアウト
 $(document).on('mouseleave', '.float-frame', (e) => {
-    const player = $(e.target).closest('.float-frame');
-    $(player).addClass('zoom-out');
+    $(e.currentTarget).addClass('zoom-out');
 });
 
 // クリックイベント: タイムスタンプ -> スクロール位置を維持する

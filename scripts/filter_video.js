@@ -46,10 +46,9 @@ const editVideoItem = (item) => {
 // クリックイベント: フィルターボタン
 $(document).on('click', '.video-filter-btn', (e) => {
     // フィルタータイプを切り替える
-    const section = $(e.target).closest('ytd-section-list-renderer');
+    const section = $(e.currentTarget).closest('ytd-section-list-renderer');
     const sectionType = $(section).attr('type');
-    const button = $(e.target).closest('.video-filter-btn');
-    const buttonType = $(button).attr('type');
+    const buttonType = $(e.currentTarget).attr('type');
     $(section).attr('type', sectionType === buttonType ? 'default' : buttonType);
     // サムネイルの未ロードを防ぐ
     $(window).scrollTop(0);
