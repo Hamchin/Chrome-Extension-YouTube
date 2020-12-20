@@ -14,7 +14,7 @@ $(document).on('keydown', (e) => {
     }
 });
 
-// キーダウンイベント: テキストエリア
+// キーダウンイベント: テキストエリア -> 親要素への伝播を抑止する
 $(document).on('keydown', 'input, textarea, ytd-commentbox', (e) => e.stopPropagation());
 
 // 変更監視: 音量パネル -> 音量のキャッシュを削除する
