@@ -46,4 +46,4 @@ $(document).on('click', 'yt-live-chat-renderer[type="member"] .chat-filter-btn',
 $(document).on('click', 'yt-live-chat-renderer[type="moderator"] .chat-filter-btn', () => setChatType('default'));
 
 // クリックイベント: チャットリロードボタン
-$(document).on('click', '.chat-reload-btn', () => chrome.runtime.sendMessage({ type: 'RELOAD_CHAT' }));
+$(document).on('click', '.chat-reload-btn', () => parent.postMessage({ type: 'RELOAD_CHAT' }, '*'));

@@ -14,7 +14,12 @@ const reloadChat = () => {
     $(button).click();
 };
 
-// メッセージイベント -> チャットを更新する
+// メッセージイベント: インラインフレーム -> チャットを更新する
+window.addEventListener('message', (event) => {
+    if (event.data.type === 'RELOAD_CHAT') reloadChat();
+});
+
+// メッセージイベント: バックグラウンド -> チャットを更新する
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === 'RELOAD_CHAT') reloadChat();
 });
