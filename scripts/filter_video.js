@@ -51,9 +51,8 @@ $(document).on('click', '.video-filter-btn', (e) => {
     const buttonType = $(e.currentTarget).attr('type');
     $(section).attr('type', sectionType === buttonType ? 'default' : buttonType);
     // サムネイルの未ロードを防ぐ
+    $(window).scrollTop(1);
     $(window).scrollTop(0);
-    $('ytd-topbar-menu-button-renderer').first().click();
-    $('ytd-topbar-menu-button-renderer').first().click();
 });
 
 // フィルターボタンを設置する
@@ -68,7 +67,7 @@ const addFilterButton = (filterInfo, menu) => {
         type: filterInfo.type
     });
     $(iconButton).append(icon);
-    $(menu).first().before(iconButton);
+    $(menu).before(iconButton);
     $(icon).html(filterInfo.svg);
 };
 
@@ -85,7 +84,7 @@ const sectionListObserver = new MutationObserver((mutations) => {
 // 変更監視: 登録チャンネルページ
 const subscriptionObserver = new MutationObserver(() => {
     const browse = $('ytd-browse[page-subtype="subscriptions"]');
-    const menu = $(browse).find('#title-container > #menu');
+    const menu = $(browse).find('#title-container > #menu').first();
     const sectionList = $(browse).find('ytd-section-list-renderer > #contents');
     if ($(menu).length === 0) return;
     if ($(sectionList).length === 0) return;
