@@ -51,8 +51,8 @@ $(document).on('click', '.video-filter-btn', (e) => {
     const buttonType = $(e.currentTarget).attr('type');
     $(section).attr('type', sectionType === buttonType ? 'default' : buttonType);
     // サムネイルの未ロードを防ぐ
-    $(window).scrollTop(1);
-    $(window).scrollTop(0);
+    const button = $('ytd-topbar-menu-button-renderer').first();
+    $(button).click() && $(button).click();
 });
 
 // フィルターボタンを設置する

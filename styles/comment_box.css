@@ -1,0 +1,17 @@
+/* コメントボックス */
+
+.comment-box {
+    box-sizing: border-box;
+    border: 1px solid var(--yt-spec-10-percent-layer);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overscroll-behavior: contain;
+    min-height: 600px;
+    height: var(--ytd-watch-flexy-chat-max-height);
+    margin-bottom: var(--ytd-margin-6x);
+    padding: 0 20px;
+}
+
+.comment-box #action-menu {
+    display: none !important;
+}

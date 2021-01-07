@@ -18,8 +18,3 @@ const reloadChat = () => {
 window.addEventListener('message', (event) => {
     if (event.data.type === 'RELOAD_CHAT') reloadChat();
 });
-
-// メッセージイベント: バックグラウンド -> チャットを更新する
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === 'RELOAD_CHAT') reloadChat();
-});
