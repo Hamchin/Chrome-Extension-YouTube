@@ -24,17 +24,17 @@
       ],
       "js": [
         "vendor/jquery.min.js",
+        "scripts/chat_reload.js",
         "scripts/comment_box.js",
-        "scripts/filter_video.js",
         "scripts/float_frame.js",
-        "scripts/reload_chat.js",
-        "scripts/stop_video.js",
-        "scripts/video_volume.js"
+        "scripts/video_control.js",
+        "scripts/video_filter.js",
+        "scripts/video_stop.js"
       ],
       "css": [
         "styles/comment_box.css",
-        "styles/filter_video.css",
-        "styles/float_frame.css"
+        "styles/float_frame.css",
+        "styles/video_filter.css"
       ]
     },
     {
