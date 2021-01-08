@@ -26,13 +26,15 @@
         "vendor/jquery.min.js",
         "scripts/comment_box.js",
         "scripts/filter_video.js",
+        "scripts/float_frame.js",
         "scripts/reload_chat.js",
         "scripts/stop_video.js",
         "scripts/video_volume.js"
       ],
       "css": [
         "styles/comment_box.css",
-        "styles/filter_video.css"
+        "styles/filter_video.css",
+        "styles/float_frame.css"
       ]
     },
     {

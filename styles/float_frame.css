@@ -2,7 +2,6 @@
 
 .float-frame {
     position: fixed !important;
-    right: 24px !important;
     z-index: 1000 !important;
 }
 
@@ -10,5 +9,5 @@
 
 .zoom-out {
     transform: scale(0.6);
-    transform-origin: top right;
+    transform-origin: top left;
 }

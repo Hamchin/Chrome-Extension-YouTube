@@ -7,14 +7,14 @@ yt-live-chat-viewer-engagement-message-renderer {
 /* チャットボタンのレイアウト */
 
 .chat-filter-btn, .chat-reload-btn {
-    height: 40px;
     width: 40px;
+    height: 40px;
     padding: 8px;
 }
 
 .chat-filter-btn svg, .chat-reload-btn svg {
-    height: 100%;
     width: 100%;
+    height: 100%;
 }
 
 /* チャットボタンのカラー */
