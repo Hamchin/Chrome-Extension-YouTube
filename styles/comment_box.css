@@ -20,9 +20,9 @@ ytd-app:not([comments]) .comment-box {
     display: none !important;
 }
 
-/* コメント切替ボタン */
+/* コメント表示ボタン */
 
-.comment-switch-btn {
+.comment-show-btn {
     color: var(--yt-spec-icon-active-other);
     cursor: pointer;
     width: 40px;
@@ -31,11 +31,11 @@ ytd-app:not([comments]) .comment-box {
     margin-right: 8px;
 }
 
-.comment-switch-btn svg {
+.comment-show-btn svg {
     width: 100%;
     height: 100%;
 }
 
-ytd-app:not([comments]) .comment-switch-btn {
+ytd-app:not([comments]) .comment-show-btn {
     opacity: 0.5;
 }

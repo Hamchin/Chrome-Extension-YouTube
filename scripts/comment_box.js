@@ -13,9 +13,9 @@ const commentBoxObserver = new MutationObserver(() => {
     comments.classList.add('comment-box');
     $('#secondary-inner').prepend(comments);
     comments.addEventListener('scroll', rescrollWindow);
-    // コメント切替ボタンを設置する
+    // コメント表示ボタンを設置する
     const icon = $('<yt-icon>');
-    const button = $('<yt-icon-button>', { class: 'comment-switch-btn', title: 'Switch Comment Box' });
+    const button = $('<yt-icon-button>', { class: 'comment-show-btn', title: 'Show Comment Box' });
     $(button).append(icon);
     $('ytd-masthead #end').prepend(button);
     $(icon).html('<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"></path></svg>');
@@ -26,8 +26,8 @@ const commentBoxObserver = new MutationObserver(() => {
     commentBoxObserver.disconnect();
 });
 
-// クリックイベント: コメント切替ボタン -> コメント欄の表示を切り替える
-$(document).on('click', '.comment-switch-btn', () => {
+// クリックイベント: コメント表示ボタン -> コメント欄の表示を切り替える
+$(document).on('click', '.comment-show-btn', () => {
     const app = document.querySelector('ytd-app');
     app.toggleAttribute('comments');
     rescrollWindow();
@@ -37,7 +37,7 @@ $(document).on('click', '.comment-switch-btn', () => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type !== 'UPDATED') return;
     commentBoxObserver.disconnect();
-    $('.comment-switch-btn').remove();
+    $('.comment-show-btn').remove();
     $('ytd-app').removeAttr('comments');
     if (location.pathname !== '/watch') return;
     const options = { childList: true, subtree: true };
