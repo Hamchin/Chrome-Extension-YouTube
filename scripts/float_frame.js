@@ -1,13 +1,3 @@
-// マウスオーバーイベント: フロートフレーム -> ズームイン
-$(document).on('mouseenter', '.float-frame', (e) => {
-    $(e.currentTarget).removeClass('zoom-out');
-});
-
-// マウスアウトイベント: フロートフレーム -> ズームアウト
-$(document).on('mouseleave', '.float-frame', (e) => {
-    $(e.currentTarget).addClass('zoom-out');
-});
-
 // フロートフレームを設定する
 const setFloatFrame = (enabled) => {
     const player = $('.html5-video-player');

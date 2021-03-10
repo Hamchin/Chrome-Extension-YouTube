@@ -2,12 +2,14 @@
 
 .float-frame {
     position: fixed !important;
+    left: 24px !important;
+    bottom: 24px !important;
     z-index: 1000 !important;
 }
 
 /* ズームアウト */
 
 .zoom-out {
-    transform: scale(0.6);
-    transform-origin: top left;
+    transform: scale(0.5);
+    transform-origin: left bottom;
 }
