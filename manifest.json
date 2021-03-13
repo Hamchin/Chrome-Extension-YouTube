@@ -27,6 +27,7 @@
         "scripts/chat_reload.js",
         "scripts/comment_box.js",
         "scripts/float_frame.js",
+        "scripts/video_continue.js",
         "scripts/video_control.js",
         "scripts/video_filter.js",
         "scripts/video_stop.js"

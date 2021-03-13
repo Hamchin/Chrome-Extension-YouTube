@@ -2,6 +2,7 @@
 
 - Extend the space of the video title.
 - Prevent the channel video from being played.
+- Prevent the video from being automatically paused.
 - Place the boxed comments next to the video.
 - Pin the video in a floating frame when scrolling down.
 - Press <kbd>[</kbd> / <kbd>]</kbd> to backward / forward 1 second.
