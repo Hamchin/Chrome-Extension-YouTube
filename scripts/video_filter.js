@@ -20,7 +20,7 @@ const editVideoItem = (item) => {
         $(item).attr('type', 'live');
     }
     // 配信予約の場合
-    else if (isFound('paper-button')) {
+    else if (isFound('ytd-toggle-button-renderer')) {
         $(item).attr('type', 'reminder');
         // 公開予定までの残り時間を表示する
         const metadata = $(item).find('#metadata-line').text();
@@ -35,7 +35,7 @@ const editVideoItem = (item) => {
             hours !== 0 ? `${hours} 時間後 に公開予定` :
             minutes !== 0 ? `${minutes} 分後 に公開予定` : 'まもなく公開予定'
         );
-        $(item).find('paper-button').text(message);
+        $(item).find('ytd-toggle-button-renderer yt-formatted-string').text(message);
     }
     // それ以外の場合
     else {
