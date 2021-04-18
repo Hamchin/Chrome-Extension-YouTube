@@ -1,7 +1,7 @@
 // チャットを更新する
 const reloadChat = () => {
     const frame = $('ytd-live-chat-frame');
-    const button = $(frame).find('#show-hide-button paper-button');
+    const button = $(frame).find('#show-hide-button > ytd-toggle-button-renderer');
     if ($(frame).length === 0) return;
     if ($(button).length === 0) return;
     // チャットの初期状態を取得する
