@@ -5,7 +5,7 @@ const observer = new MutationObserver(() => {
     if (dialog.offsetParent === null) return;
     const button = dialog.querySelector('#confirm-button');
     if (button === null) return;
-    const string = dialog.querySelector('paper-dialog-scrollable yt-formatted-string');
+    const string = dialog.querySelector('tp-yt-paper-dialog-scrollable yt-formatted-string');
     if (string === null) return;
     const text = string.textContent;
     if (text === '動画が一時停止されました。続きを視聴しますか？') button.click();
