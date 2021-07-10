@@ -25,13 +25,16 @@ const playerObserver = new IntersectionObserver((entries) => {
     setFloatFrame(!lastEntry.isIntersecting);
 });
 
-// タブ更新イベント -> 交差監視を開始する
+// タブ更新イベント
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type !== 'UPDATED') return;
+    // 設定をリセットする
     setFloatFrame(false);
     playerObserver.disconnect();
     document.exitPictureInPicture().catch(() => {});
+    // 動画ページ以外の場合 -> キャンセル
     if (location.pathname !== '/watch') return;
+    // 交差監視を開始する
     const player = document.querySelector('ytd-player');
     if (player === null) return;
     playerObserver.observe(player);

@@ -1,10 +1,10 @@
-/* チャットのお知らせ */
+/* エンゲージメント */
 
 yt-live-chat-viewer-engagement-message-renderer {
     display: none !important;
 }
 
-/* チャットボタンのレイアウト */
+/* チャットボタン */
 
 .chat-filter-btn, .chat-reload-btn {
     width: 40px;

@@ -56,9 +56,9 @@ $(document).on('click', '.video-filter-btn', (e) => {
 });
 
 // フィルターボタンを設置する
-const addFilterButton = (filterInfo, menu) => {
-    const buttonQuery = `.video-filter-btn[type="${filterInfo.type}"]`;
-    const button = $(menu).parent().find(buttonQuery);
+const setFilterButton = (filterInfo, menu) => {
+    const selector = `.video-filter-btn[type="${filterInfo.type}"]`;
+    const button = $(menu).parent().find(selector);
     if ($(button).length > 0) return;
     const icon = $('<yt-icon>');
     const iconButton = $('<yt-icon-button>', {
@@ -89,8 +89,8 @@ const subscriptionObserver = new MutationObserver(() => {
     if ($(menu).length === 0) return;
     if ($(sectionList).length === 0) return;
     // フィルターボタンを設置する
-    addFilterButton(liveFilterInfo, menu);
-    addFilterButton(videoFilterInfo, menu);
+    setFilterButton(liveFilterInfo, menu);
+    setFilterButton(videoFilterInfo, menu);
     // 各動画アイテムを加工する
     const videoItems = $(sectionList).find('ytd-grid-video-renderer');
     $(videoItems).each((_, item) => editVideoItem(item));
@@ -101,12 +101,15 @@ const subscriptionObserver = new MutationObserver(() => {
     subscriptionObserver.disconnect();
 });
 
-// タブ更新イベント -> 変更監視を開始する
+// タブ更新イベント
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type !== 'UPDATED') return;
+    // 設定をリセットする
     subscriptionObserver.disconnect();
     sectionListObserver.disconnect();
+    // 登録チャンネルページ以外の場合 -> キャンセル
     if (location.pathname !== '/feed/subscriptions') return;
+    // 変更監視を開始する
     const browse = document.querySelector('ytd-browse[page-subtype="subscriptions"]');
     if (browse === null) return;
     const options = { childList: true, subtree: true };

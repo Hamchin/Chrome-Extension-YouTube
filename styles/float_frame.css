@@ -2,8 +2,8 @@
 
 .float-frame {
     position: fixed !important;
-    left: 24px !important;
-    bottom: 24px !important;
+    left: 24px;
+    bottom: 24px;
     z-index: 1000 !important;
 }
 

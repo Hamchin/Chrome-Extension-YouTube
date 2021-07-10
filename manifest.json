@@ -30,12 +30,14 @@
         "scripts/video_continue.js",
         "scripts/video_control.js",
         "scripts/video_filter.js",
+        "scripts/video_resize.js",
         "scripts/video_stop.js"
       ],
       "css": [
         "styles/comment_box.css",
         "styles/float_frame.css",
-        "styles/video_filter.css"
+        "styles/video_filter.css",
+        "styles/video_resize.css"
       ]
     },
     {

@@ -33,13 +33,16 @@ $(document).on('click', '.comment-show-btn', () => {
     rescrollWindow();
 });
 
-// タブ更新イベント -> 変更監視を開始する
+// タブ更新イベント
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type !== 'UPDATED') return;
+    // 設定をリセットする
     commentBoxObserver.disconnect();
     $('.comment-show-btn').remove();
     $('ytd-app').removeAttr('comments');
+    // 動画ページ以外の場合 -> キャンセル
     if (location.pathname !== '/watch') return;
+    // 変更監視を開始する
     const options = { childList: true, subtree: true };
     commentBoxObserver.observe(document, options);
 });

@@ -9,4 +9,5 @@
 - Reset the volume each time a new tab is opened.
 - Click the button to reload the live chat.
 - Click the button to filter the live chat.
+- Click the button to fit the video to the browser.
 - Click the button to filter the list of videos for subscriptions.

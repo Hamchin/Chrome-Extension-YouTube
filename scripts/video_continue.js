@@ -11,4 +11,5 @@ const observer = new MutationObserver(() => {
     if (text === '動画が一時停止されました。続きを視聴しますか？') button.click();
 });
 
+// 変更監視を開始する
 observer.observe(document.body, { childList: true });
