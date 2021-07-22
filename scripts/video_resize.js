@@ -18,7 +18,9 @@ $(document).on('click', '.ytp-fit-button', () => {
         $(player).addClass('browser-fit');
         $(player).css('width', $(parent).css('width'));
         $(player).css('height', $(parent).css('height'));
-        const scale = window.innerHeight / $(parent).height();
+        const widthScale = window.innerWidth / $(parent).width();
+        const heightScale = window.innerHeight / $(parent).height();
+        const scale = Math.min(widthScale, heightScale);
         $(player).css('transform', `scale(${scale})`);
         $('<div>', { class: 'browser-fit-mask' }).prependTo('body');
     }
