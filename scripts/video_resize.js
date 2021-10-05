@@ -1,11 +1,11 @@
 // ブラウザフィットボタンを設置する
 const setBrowserFitButton = () => {
-    const sizeButton = $('ytd-player .ytp-size-button');
-    if ($(sizeButton).length === 0) return;
     const button = $('ytd-player .ytp-fit-button');
     if ($(button).length > 0) return;
+    const sizeButton = $('ytd-player .ytp-size-button');
+    if ($(sizeButton).length === 0) return;
     const fitButton = $('<button>', { class: 'ytp-fit-button ytp-button', title: 'Fit to Browser' });
-    fitButton.html('<svg width="40" height="40" viewBox="0 0 40 20"><path class="ytp-svg-fill" d="M14 10l3 3V7l-3 3zM27 10l-3-3v6l3-3z"></path><path class="ytp-svg-fill" d="M29 4v12H12V4h17m2-2H10v16h21V2z"></path></svg>');
+    fitButton.html(`<svg width="44" height="48" viewBox="0 0 40 20"><path class="ytp-svg-fill" d="M14 10l3 3V7l-3 3zM27 10l-3-3v6l3-3z"></path><path class="ytp-svg-fill" d="M29 4v12H12V4h17m2-2H10v16h21V2z"></path></svg>`);
     $(sizeButton).after(fitButton);
 };
 
