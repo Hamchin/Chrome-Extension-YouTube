@@ -1,13 +1,12 @@
-// ブラウザフィットボタンを設置する
-const setBrowserFitButton = () => {
-    const button = $('ytd-player .ytp-fit-button');
-    if ($(button).length > 0) return;
+// 変更監視: ブラウザフィットボタン
+const fitButtonObserver = new MutationObserver(() => {
     const sizeButton = $('ytd-player .ytp-size-button');
     if ($(sizeButton).length === 0) return;
     const fitButton = $('<button>', { class: 'ytp-fit-button ytp-button', title: 'Fit to Browser' });
     fitButton.html(`<svg width="44" height="48" viewBox="0 0 40 20"><path class="ytp-svg-fill" d="M14 10l3 3V7l-3 3zM27 10l-3-3v6l3-3z"></path><path class="ytp-svg-fill" d="M29 4v12H12V4h17m2-2H10v16h21V2z"></path></svg>`);
     $(sizeButton).after(fitButton);
-};
+    fitButtonObserver.disconnect();
+});
 
 // クリックイベント: ブラウザフィットボタン
 $(document).on('click', '.ytp-fit-button', () => {
@@ -37,8 +36,12 @@ $(document).on('click', '.ytp-fit-button', () => {
 // タブ更新イベント
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type !== 'UPDATED') return;
+    // 設定をリセットする
+    fitButtonObserver.disconnect();
+    $('.ytp-fit-button').remove();
     // 動画ページ以外の場合 -> キャンセル
     if (location.pathname !== '/watch') return;
-    // ブラウザフィットボタンを設置する
-    setBrowserFitButton();
+    // 変更監視を開始する
+    const options = { childList: true, subtree: true };
+    fitButtonObserver.observe(document, options);
 });

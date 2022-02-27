@@ -19,10 +19,6 @@ const commentBoxObserver = new MutationObserver(() => {
     $(button).append(icon);
     $('ytd-masthead #end').prepend(button);
     $(icon).html('<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"></path></svg>');
-    // コメント欄の表示設定を初期化する
-    const app = document.querySelector('ytd-app');
-    const frame = document.querySelector('ytd-live-chat-frame');
-    if (frame === null) app.setAttribute('comments', '');
     commentBoxObserver.disconnect();
 });
 

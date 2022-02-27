@@ -110,8 +110,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // 登録チャンネルページ以外の場合 -> キャンセル
     if (location.pathname !== '/feed/subscriptions') return;
     // 変更監視を開始する
-    const browse = document.querySelector('ytd-browse[page-subtype="subscriptions"]');
-    if (browse === null) return;
     const options = { childList: true, subtree: true };
-    subscriptionObserver.observe(browse, options);
+    subscriptionObserver.observe(document, options);
 });
