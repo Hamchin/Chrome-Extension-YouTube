@@ -16,7 +16,7 @@ const liveFilterInfo = {
 const editVideoItem = (item) => {
     const isFound = (query) => $(item).find(query).length > 0;
     // 配信中の場合
-    if (isFound('.badge-style-type-live-now')) {
+    if (isFound('.badge-style-type-live-now, .badge-style-type-live-now-alternate')) {
         $(item).attr('type', 'live');
     }
     // 配信予約の場合
