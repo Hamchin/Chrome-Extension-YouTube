@@ -25,26 +25,32 @@
     color: var(--yt-spec-icon-inactive);
 }
 
-ytd-section-list-renderer[type="video"] .video-filter-btn[type="video"] {
-    color: var(--yt-spec-call-to-action);
-}
-
 ytd-section-list-renderer[type="live"] .video-filter-btn[type="live"] {
     color: var(--yt-spec-call-to-action);
 }
 
+ytd-section-list-renderer[type="video"] .video-filter-btn[type="video"] {
+    color: var(--yt-spec-call-to-action);
+}
+
+ytd-section-list-renderer[type="archive"] .video-filter-btn[type="archive"] {
+    color: var(--yt-spec-call-to-action);
+}
+
+/* 配信表示モード */
+
+ytd-section-list-renderer[type="live"] ytd-grid-video-renderer:not([type="live"]) {
+    display: none !important;
+}
+
 /* 動画表示モード */
 
-ytd-section-list-renderer[type="video"] ytd-grid-video-renderer[type="live"] {
+ytd-section-list-renderer[type="video"] ytd-grid-video-renderer:not([type="video"]) {
     display: none !important;
 }
 
-ytd-section-list-renderer[type="video"] ytd-grid-video-renderer[type="reminder"] {
-    display: none !important;
-}
+/* アーカイブ表示モード */
 
-/* ライブ表示モード */
-
-ytd-section-list-renderer[type="live"] ytd-grid-video-renderer[type="video"] {
+ytd-section-list-renderer[type="archive"] ytd-grid-video-renderer:not([type="archive"]) {
     display: none !important;
 }
