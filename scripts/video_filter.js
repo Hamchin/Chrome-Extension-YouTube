@@ -103,6 +103,8 @@ const subscriptionObserver = new MutationObserver(() => {
     setFilterButton(liveFilterInfo, menu);
     setFilterButton(videoFilterInfo, menu);
     setFilterButton(archiveFilterInfo, menu);
+    // デフォルトを配信表示モードにする
+    $('.video-filter-btn[type="live"]').click();
     // 各動画アイテムを加工する
     const videoItems = $(sectionList).find('ytd-grid-video-renderer');
     $(videoItems).each((_, item) => editVideoItem(item));
