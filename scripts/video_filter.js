@@ -42,7 +42,7 @@ const editVideoItem = (item) => {
             hours !== 0 ? `${hours} 時間後 に公開予定` :
             minutes !== 0 ? `${minutes} 分後 に公開予定` : 'まもなく公開予定'
         );
-        $(item).find('ytd-toggle-button-renderer yt-formatted-string').text(message);
+        $(item).find('.yt-core-attributed-string--white-space-no-wrap').text(message);
     }
     // アーカイブの場合
     else if ($(item).find('#metadata-line').text().includes('配信済み')) {
