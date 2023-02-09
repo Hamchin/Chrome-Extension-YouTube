@@ -38,9 +38,9 @@ const editVideoItem = (item) => {
         const hours = Math.floor(minutes / 60);
         const days = Math.floor(hours / 24);
         const message = (
-            days !== 0 ? `${days} 日後 に公開予定` :
-            hours !== 0 ? `${hours} 時間後 に公開予定` :
-            minutes !== 0 ? `${minutes} 分後 に公開予定` : 'まもなく公開予定'
+            days !== 0 ? `${days} 日後` :
+            hours !== 0 ? `${hours} 時間後` :
+            minutes !== 0 ? `${minutes} 分後` : 'まもなく開始'
         );
         $(item).find('.yt-core-attributed-string--white-space-no-wrap').text(message);
     }
