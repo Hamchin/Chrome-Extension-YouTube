@@ -14,8 +14,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // チャンネルページ以外の場合 -> キャンセル
     const pathList = location.pathname.split("/").filter(path => path !== "");
     const firstPath = pathList.length ? pathList[0] : "";
-    const channelPaths = ["c", "channel", "user"];
-    if (channelPaths.includes(firstPath) === false) return;
+    const regex = /^(@|c$|channel$|user$)/;
+    if (regex.test(firstPath) === false) return;
     // 変更監視を開始する
     const options = { childList: true, subtree: true };
     channelObserver.observe(document, options);
