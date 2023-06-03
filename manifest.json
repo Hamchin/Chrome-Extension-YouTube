@@ -24,7 +24,6 @@
       ],
       "js": [
         "vendor/jquery.min.js",
-        "scripts/chat_reload.js",
         "scripts/comment_box.js",
         "scripts/float_frame.js",
         "scripts/video_continue.js",
@@ -39,19 +38,6 @@
         "styles/video_filter.css",
         "styles/video_resize.css"
       ]
-    },
-    {
-      "matches": [
-        "https://www.youtube.com/live_chat*"
-      ],
-      "js": [
-        "vendor/jquery.min.js",
-        "scripts/live_chat.js"
-      ],
-      "css": [
-        "styles/live_chat.css"
-      ],
-      "all_frames": true
     }
   ]
 }
