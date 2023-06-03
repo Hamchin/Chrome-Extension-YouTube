@@ -57,7 +57,7 @@ const editVideoItem = (item) => {
 // クリックイベント: フィルターボタン
 $(document).on("click", ".video-filter-btn", (e) => {
     // フィルタータイプを切り替える
-    const section = $(e.currentTarget).closest("ytd-section-list-renderer");
+    const section = $(e.currentTarget).closest("ytd-rich-grid-renderer");
     const sectionType = $(section).attr("type");
     const buttonType = $(e.currentTarget).attr("type");
     $(section).attr("type", sectionType === buttonType ? "default" : buttonType);
@@ -96,7 +96,7 @@ const sectionListObserver = new MutationObserver((mutations) => {
 const subscriptionObserver = new MutationObserver(() => {
     const browse = $('ytd-browse[page-subtype="subscriptions"]');
     const menu = $(browse).find("#title-container > #menu").first();
-    const sectionList = $(browse).find("ytd-section-list-renderer > #contents");
+    const sectionList = $(browse).find("ytd-rich-grid-row > #contents");
     if ($(menu).length === 0) return;
     if ($(sectionList).length === 0) return;
     // フィルターボタンを設置する
@@ -106,7 +106,7 @@ const subscriptionObserver = new MutationObserver(() => {
     // デフォルトを配信表示モードにする
     $('.video-filter-btn[type="live"]').click();
     // 各動画アイテムを加工する
-    const videoItems = $(sectionList).find("ytd-grid-video-renderer");
+    const videoItems = $(sectionList).find("ytd-rich-item-renderer");
     $(videoItems).each((_, item) => editVideoItem(item));
     // セクションリストの変更監視を開始する
     const options = { childList: true };
