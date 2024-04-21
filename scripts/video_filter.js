@@ -86,7 +86,7 @@ const setFilterButton = (filterInfo, menu) => {
 const sectionListObserver = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((section) => {
-            const videoItems = $(section).find("ytd-grid-video-renderer");
+            const videoItems = $(section).find("ytd-rich-item-renderer");
             $(videoItems).each((_, item) => editVideoItem(item));
         });
     });
@@ -96,9 +96,9 @@ const sectionListObserver = new MutationObserver((mutations) => {
 const subscriptionObserver = new MutationObserver(() => {
     const browse = $('ytd-browse[page-subtype="subscriptions"]');
     const menu = $(browse).find("#title-container > #menu").first();
-    const sectionList = $(browse).find("ytd-rich-grid-row > #contents");
+    const contents = $(browse).find("#contents").get(0);
     if ($(menu).length === 0) return;
-    if ($(sectionList).length === 0) return;
+    if ($(contents).length === 0) return;
     // フィルターボタンを設置する
     setFilterButton(liveFilterInfo, menu);
     setFilterButton(videoFilterInfo, menu);
@@ -106,11 +106,11 @@ const subscriptionObserver = new MutationObserver(() => {
     // デフォルトを配信表示モードにする
     $('.video-filter-btn[type="live"]').click();
     // 各動画アイテムを加工する
-    const videoItems = $(sectionList).find("ytd-rich-item-renderer");
+    const videoItems = $(contents).find("ytd-rich-item-renderer");
     $(videoItems).each((_, item) => editVideoItem(item));
     // セクションリストの変更監視を開始する
     const options = { childList: true };
-    sectionListObserver.observe(sectionList.get(0), options);
+    sectionListObserver.observe(contents, options);
     // 変更監視を停止する
     subscriptionObserver.disconnect();
 });
