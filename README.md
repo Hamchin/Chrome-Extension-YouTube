@@ -1,4 +1,4 @@
-# Chrome-Extension-YouTube
+# Chrome Extension for YouTube
 
 - Extend the space of the video title.
 - Prevent the channel video from being played.
